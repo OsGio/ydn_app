@@ -2,6 +2,7 @@
 
 @section('content')
 {{ Form::open(array('url' => './')) }}
+
 <section class="col-sm-12">
 	<div id="first" class="col-md-6 col-lg-6">
 
@@ -154,16 +155,11 @@
 					<div class="col-sm-4">
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
-							<tr><th>広告タイトル</th></tr>
+							<tr><th colspan="2">広告タイトル<button class="btn btn-sm btn-primary">+</button></th></tr>
 						</thead>
-						<tbody>
-							<tr><td>{{Form::text('ad_ads_title', '')}}</td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
+						<tbody class="ad_ads_titles">
+							<tr><td class="ad_ads_title" data-id="1">{{Form::text('ad_ads_title[]', '')}}</td><td class="title_num[]" data-id="1">0</td>{{Form::hidden('title_num[]', '0', array('class' => 'title_num[]', 'data-id' => '1'))}}</tr>
+							<tr><td></td><td></td></tr>
 						</tbody>
 					</table>
 				</div><!-- /.col-sm-4 -->
@@ -173,12 +169,7 @@
 							<tr><th>キーワード</th></tr>
 						</thead>
 						<tbody>
-							<tr><td>{{Form::text('keyword', '')}}</td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
+							<tr><td>{{Form::text('keyword[]', '')}}</td></tr>
 							<tr><td></td></tr>
 						</tbody>
 					</table>
@@ -190,11 +181,6 @@
 						</thead>
 						<tbody>
 							<tr><td>{{Form::text('ad_ads_link_url', '')}}</td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
-							<tr><td></td></tr>
 							<tr><td></td></tr>
 						</tbody>
 					</table>
