@@ -22,12 +22,14 @@ class FunctionController extends BaseController {
 	public function postIndex()
 	{
 		$posts = $_POST;
+
 		foreach($posts as $key => $val)
 		{
 			if($val==""){ $posts[$key] = null; }
 		}
 		extract($posts);
-// var_dump($posts);exit;
+		$keyword = str_replace(array("\r\n", "\r", "\n"), ' ', $keyword);
+//var_dump($keyword);exit;
 		$csv_header = array('キャンペーン名','広告グループ名','コンポーネントの種類','配信設定','配信状況','マッチタイプ','キーワード','カスタムURL','入札価格','広告名','タイトル','説明文1','説明文2','表示URL','リンク先URL','キャンペーン予算（日額）','キャンペーン開始日',
 							'デバイス','配信先','スマートフォン入札価格調整率（%）','広告タイプ','キャリア','優先デバイス','キャンペーンID','広告グループID','キーワードID','広告ID','エラーメッセージ');
 		$csv_compo_camp = array($campaign_name,null,'キャンペーン','オン',null,null,null,null,null,null,null,null,null,null,null,$campaign_budget,null,'PC|モバイル|スマートフォン|タブレット','すべて',0,null,null,null,null,null,null,null,null);
@@ -43,8 +45,8 @@ class FunctionController extends BaseController {
 
 		$filename = $campaign_name. '.csv';
 
-		header("Content-Type: application/octet-stream");
-		header("Content-Disposition: attachment; filename=$filename");
+//		header("Content-Type: application/octet-stream");
+//		header("Content-Disposition: attachment; filename=$filename");
 		$csv = implode(",", $csv_header). "\n";
 		$csv .= implode(",", $csv_compo_camp). "\n";
 		$csv .= implode(",", $csv_compo_adgroup). "\n";
